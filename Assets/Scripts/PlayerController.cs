@@ -29,8 +29,9 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
+
         float horizontal = Input.GetAxis("Horizontal");
 
         Vector2 moviment = new Vector2(horizontal * velocity, rb.velocity.y);
@@ -42,6 +43,18 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = moviment;
+
+        // SINGLETON
+        if( Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            //GameObject.Find("SpawnPontos").GetComponent<SpawnPontos>().Spawnar(0);
+            SpawnPontos.singleton.Spawnar(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            //GameObject.Find("SpawnPontos").GetComponent<SpawnPontos>().Spawnar(1);
+            SpawnPontos.singleton.Spawnar(1);
+        }
 
     }
 
